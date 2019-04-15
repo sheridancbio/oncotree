@@ -154,7 +154,7 @@ public class OncoTreeNode {
 
     @JsonProperty("revocations")
     public void setRevocations(String revocations) {
-        if (revocations != null) {
+        if (revocations != null && revocations.trim().length() != 0) {
             this.revocations = Arrays.asList(revocations.split("\\s+"));
         }
     }
@@ -166,7 +166,7 @@ public class OncoTreeNode {
 
     @JsonProperty("precursors")
     public void setPrecursors(String precursors) {
-        if (precursors != null) {
+        if (precursors != null && precursors.trim().length() != 0) {
             this.precursors = Arrays.asList(precursors.split("\\s+"));
         }
     }

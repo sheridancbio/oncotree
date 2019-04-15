@@ -36,7 +36,7 @@ import org.mskcc.oncotree.error.InvalidOncoTreeDataException;
 import org.mskcc.oncotree.model.TumorType;
 import org.mskcc.oncotree.model.Version;
 import org.mskcc.oncotree.topbraid.TopBraidException;
-import org.mskcc.oncotree.topbraid.OncoTreeVersionRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeVersionRepositoryHardcoded;
 import org.mskcc.oncotree.utils.FailedCacheRefreshException;
 import org.mskcc.oncotree.utils.VersionUtil;
 
@@ -64,7 +64,7 @@ public class CacheUtil {
     public static final Integer MAXIMUM_CACHE_AGE_IN_DAYS = 3;
 
     @Autowired
-    private OncoTreeVersionRepository oncoTreeVersionRepository;
+    private OncoTreeVersionRepositoryHardcoded oncoTreeVersionRepository;
 
     @Autowired
     private TumorTypesUtil tumorTypesUtil;
@@ -83,7 +83,8 @@ public class CacheUtil {
             try {
                 resetCache();
             } catch (FailedCacheRefreshException e) {
-                sendSlackNotification("*URGENT: OncoTree Error* - an attempt to refresh an outdated or null cache failed.");
+                logger.error(e.getMessage());
+                //sendSlackNotification("*URGENT: OncoTree Error* - an attempt to refresh an outdated or null cache failed.");
             }
         }
     }

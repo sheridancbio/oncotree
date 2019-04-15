@@ -25,8 +25,8 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.mskcc.oncotree.topbraid.OncoTreeNode;
-import org.mskcc.oncotree.topbraid.OncoTreeRepository;
-import org.mskcc.oncotree.topbraid.OncoTreeVersionRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeRepositoryHardcoded;
+import org.mskcc.oncotree.topbraid.OncoTreeVersionRepositoryHardcoded;
 import org.mskcc.oncotree.topbraid.TopBraidException;
 import org.mskcc.oncotree.utils.FailedCacheRefreshException;
 import org.mskcc.oncotree.model.Version;
@@ -48,13 +48,13 @@ public class MSKConceptCache {
     private static HashMap<String, MSKConcept> oncoTreeCodesToMSKConcepts = new HashMap<String, MSKConcept>();
 
     @Autowired
-    private OncoTreeRepository oncoTreeRepository;
+    private OncoTreeRepositoryHardcoded oncoTreeRepository;
 
     @Autowired
     private CrosswalkRepository crosswalkRepository;
 
     @Autowired
-    private OncoTreeVersionRepository oncoTreeVersionRepository;
+    private OncoTreeVersionRepositoryHardcoded oncoTreeVersionRepository;
 
     public MSKConcept get(String oncoTreeCode) {
         if (oncoTreeCodesToMSKConcepts.containsKey(oncoTreeCode)) {

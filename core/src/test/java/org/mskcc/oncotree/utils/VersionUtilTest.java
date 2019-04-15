@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import org.mskcc.oncotree.error.InvalidVersionException;
-import org.mskcc.oncotree.topbraid.OncoTreeVersionRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeVersionRepositoryHardcoded;
 import org.mskcc.oncotree.model.Version;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -44,7 +44,7 @@ public class VersionUtilTest {
     private List<Version> oncoTreeAdditionalVersionRepositoryMockResponse;
 
     @Autowired
-    private OncoTreeVersionRepository oncoTreeVersionRepository;
+    private OncoTreeVersionRepositoryHardcoded oncoTreeVersionRepository;
 
     @Autowired
     private CacheUtil cacheUtil;

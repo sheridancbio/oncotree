@@ -27,8 +27,8 @@ import org.mskcc.oncotree.model.Version;
 import org.mskcc.oncotree.utils.CacheUtil;
 import org.mskcc.oncotree.utils.VersionUtil;
 import org.mskcc.oncotree.topbraid.OncoTreeNode;
-import org.mskcc.oncotree.topbraid.OncoTreeRepository;
-import org.mskcc.oncotree.topbraid.OncoTreeVersionRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeRepositoryHardcoded;
+import org.mskcc.oncotree.topbraid.OncoTreeVersionRepositoryHardcoded;
 import org.mskcc.oncotree.topbraid.TopBraidException;
 import org.mskcc.oncotree.topbraid.TopBraidSessionConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -48,23 +48,23 @@ public class OncotreeTestConfig {
     private List<OncoTreeNode> oncoTreeRepositoryMockResponseHistoryChange = setupOncotreeRepositoryMockResponseHistoryChange();
 
     @Bean
-    public OncoTreeVersionRepository oncoTreeVersionRepository() {
-        OncoTreeVersionRepository repository = Mockito.mock(OncoTreeVersionRepository.class);
+    public OncoTreeVersionRepositoryHardcoded oncoTreeVersionRepository() {
+        OncoTreeVersionRepositoryHardcoded repository = Mockito.mock(OncoTreeVersionRepositoryHardcoded.class);
         Mockito.when(repository.getOncoTreeVersions()).thenReturn(oncoTreeVersionRepositoryMockResponse());
         return repository;
     }
 
-    public void resetVersionRepository(OncoTreeVersionRepository mockRepository) {
+    public void resetVersionRepository(OncoTreeVersionRepositoryHardcoded mockRepository) {
         Mockito.reset(mockRepository);
         Mockito.when(mockRepository.getOncoTreeVersions()).thenReturn(oncoTreeVersionRepositoryMockResponse());
     }
 
-    public void resetAdditionalVersionRepository(OncoTreeVersionRepository mockRepository) {
+    public void resetAdditionalVersionRepository(OncoTreeVersionRepositoryHardcoded mockRepository) {
         Mockito.reset(mockRepository);
         Mockito.when(mockRepository.getOncoTreeVersions()).thenReturn(oncoTreeAdditionalVersionRepositoryMockResponse());
     }
 
-    public void resetNotWorkingVersionRepository(OncoTreeVersionRepository mockRepository) {
+    public void resetNotWorkingVersionRepository(OncoTreeVersionRepositoryHardcoded mockRepository) {
         Mockito.reset(mockRepository);
         Mockito.when(mockRepository.getOncoTreeVersions()).thenThrow(new TopBraidException("faking a problem getting the topbraid data"));
     }
@@ -159,20 +159,20 @@ public class OncotreeTestConfig {
     }
 
     @Bean
-    public OncoTreeRepository oncoTreeRepository() {
-        OncoTreeRepository mockRepository = Mockito.mock(OncoTreeRepository.class);
+    public OncoTreeRepositoryHardcoded oncoTreeRepository() {
+        OncoTreeRepositoryHardcoded mockRepository = Mockito.mock(OncoTreeRepositoryHardcoded.class);
         Mockito.when(mockRepository.getOncoTree(eq(legacyVersion()))).thenReturn(oncoTreeRepositoryMockResponse);
         Mockito.when(mockRepository.getOncoTree(not(eq(legacyVersion())))).thenReturn(oncoTreeRepositoryMockResponseHistoryChange);
         return mockRepository;
     }
 
-    public void resetWorkingRepository(OncoTreeRepository mockRepository) {
+    public void resetWorkingRepository(OncoTreeRepositoryHardcoded mockRepository) {
         Mockito.reset(mockRepository);
         Mockito.when(mockRepository.getOncoTree(eq(legacyVersion()))).thenReturn(oncoTreeRepositoryMockResponse);
         Mockito.when(mockRepository.getOncoTree(not(eq(legacyVersion())))).thenReturn(oncoTreeRepositoryMockResponseHistoryChange);
     }
 
-    public void resetNotWorkingRepository(OncoTreeRepository mockRepository) {
+    public void resetNotWorkingRepository(OncoTreeRepositoryHardcoded mockRepository) {
         Mockito.reset(mockRepository);
         Mockito.when(mockRepository.getOncoTree(any(Version.class))).thenThrow(new TopBraidException("faking a problem getting the topbraid data"));
     }

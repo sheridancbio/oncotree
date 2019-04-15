@@ -24,7 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import org.mskcc.oncotree.model.TumorType;
-import org.mskcc.oncotree.topbraid.OncoTreeRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeRepositoryHardcoded;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -39,7 +39,7 @@ import static org.junit.Assert.fail;
 @Import(OncotreeTestConfig.class)
 public class MainTypesUtilTest {
     @Autowired
-    private OncoTreeRepository mockRepository;
+    private OncoTreeRepositoryHardcoded mockRepository;
     @Autowired
     private MainTypesUtil mainTypesUtil;
     @Resource(name="expectedTumorTypeMap")

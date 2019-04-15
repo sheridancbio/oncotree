@@ -30,7 +30,7 @@ import org.mskcc.oncotree.error.InvalidQueryException;
 import org.mskcc.oncotree.model.TumorType;
 import org.mskcc.oncotree.model.Version;
 import org.mskcc.oncotree.topbraid.OncoTreeNode;
-import org.mskcc.oncotree.topbraid.OncoTreeRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeRepositoryHardcoded;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +55,7 @@ public class TumorTypesUtil {
     private CacheUtil cacheUtil;
 
     @Autowired
-    private OncoTreeRepository oncoTreeRepository;
+    private OncoTreeRepositoryHardcoded oncoTreeRepository;
 
     @Autowired
     private MSKConceptCache mskConceptCache;

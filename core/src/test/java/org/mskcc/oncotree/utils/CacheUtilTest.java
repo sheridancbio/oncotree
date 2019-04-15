@@ -27,7 +27,7 @@ import org.mskcc.oncotree.error.InvalidVersionException;
 import org.mskcc.oncotree.model.TumorType;
 import org.mskcc.oncotree.model.Version;
 import org.mskcc.oncotree.topbraid.TopBraidException;
-import org.mskcc.oncotree.topbraid.OncoTreeVersionRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeVersionRepositoryHardcoded;
 import org.mskcc.oncotree.utils.FailedCacheRefreshException;
 import org.mskcc.oncotree.utils.VersionUtil;
 
@@ -68,7 +68,7 @@ public class CacheUtilTest {
     private Version latestVersion;
     
     @Autowired
-    private OncoTreeVersionRepository oncoTreeVersionRepository;
+    private OncoTreeVersionRepositoryHardcoded oncoTreeVersionRepository;
 
     @Autowired
     private CacheUtil cacheUtil;

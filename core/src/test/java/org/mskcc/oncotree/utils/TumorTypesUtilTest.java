@@ -27,7 +27,7 @@ import org.mockito.Mockito;
 import org.mskcc.oncotree.model.TumorType;
 import org.mskcc.oncotree.model.Version;
 import org.mskcc.oncotree.topbraid.OncoTreeNode;
-import org.mskcc.oncotree.topbraid.OncoTreeRepository;
+import org.mskcc.oncotree.topbraid.OncoTreeRepositoryHardcoded;
 import org.mskcc.oncotree.utils.FailedCacheRefreshException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -44,7 +44,7 @@ public class TumorTypesUtilTest {
     @Resource(name="legacyVersion")
     private Version legacyVersion;
     @Autowired
-    private OncoTreeRepository mockRepository;
+    private OncoTreeRepositoryHardcoded mockRepository;
     @Autowired
     private TumorTypesUtil tumorTypesUtil;
     @Autowired

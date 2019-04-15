@@ -24,7 +24,7 @@
           <skip>true</skip>
         </configuration>
       </plugin>
-      <!-- run python unit tests -->
+      <!-- run python unit tests
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -50,7 +50,7 @@
             <PYTHONPATH>$PYTHONPATH</PYTHONPATH>
           </environmentVariables>
         </configuration>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 
